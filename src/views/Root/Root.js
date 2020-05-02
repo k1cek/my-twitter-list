@@ -1,8 +1,13 @@
 import React from 'react';
 import './Root.css';
-import ListWrapper from '../../ListWrapper/ListWrapper';
-import { twitterAccounts } from '../../../data/twitterAccounts';
-import FormComponent from '../../Form/FormComponent';
+import ListWrapper from '../../components/ListWrapper/ListWrapper';
+import { twitterAccounts } from '../../data/twitterAccounts';
+import FormComponent from '../../components/Form/FormComponent';
+import ArticleView from '../ArticelsView/ArticleView';
+import { BrowserRouter, Route } from 'react-router-dom';
+import TwitterView from '../TwitterView/TwitterView';
+import NotesView from '../NotesView/NotesView';
+import Navigation from '../../components/Navigation/Navigation';
 
 class Root extends React.Component {
   state = {
@@ -28,11 +33,20 @@ class Root extends React.Component {
 
   render() {
     return (
-      <>
-        {/* zostanie przekazane z inputComponent w formie tablicy */}
-        <ListWrapper items={this.state.item} />
-        <FormComponent submitFN={this.addNew} />
-      </>
+      <BrowserRouter>
+        <>
+          <Navigation />
+          <h1>Hello world</h1>
+          <Route exact path="/" component={TwitterView} />
+          <Route path="/articles" component={ArticleView} />
+          <Route path="/notes" component={NotesView} />
+          {/* Jesli jestesmy na sciezce głównej to wyswittlamy TwitterView */}
+          {/* exact sprawia, że bedzie wyswietlana tylko jedna strona dokladnie ta któ®ą wpisujemy */}
+          {/* zostanie przekazane z inputComponent w formie tablicy */}
+          {/* <ListWrapper items={this.state.item} /> */}
+          {/* <FormComponent submitFN={this.addNew} /> */}
+        </>
+      </BrowserRouter>
     )
   }
 }
