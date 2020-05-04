@@ -7,7 +7,7 @@ import ArticleView from '../ArticelsView/ArticleView';
 import { BrowserRouter, Route } from 'react-router-dom';
 import TwitterView from '../TwitterView/TwitterView';
 import NotesView from '../NotesView/NotesView';
-import Navigation from '../../components/Navigation/Navigation';
+import Header from '../../components/Header/Header';
 
 class Root extends React.Component {
   state = {
@@ -33,9 +33,10 @@ class Root extends React.Component {
 
   render() {
     return (
+      // Browser router = odpowiada za prawidłowe nawigowanie, wazne by miał jedno dziecko <>
       <BrowserRouter>
         <>
-          <Navigation />
+          <Header />
           <h1>Hello world</h1>
           <Route exact path="/" component={TwitterView} />
           <Route path="/articles" component={ArticleView} />
@@ -45,8 +46,10 @@ class Root extends React.Component {
           {/* zostanie przekazane z inputComponent w formie tablicy */}
           {/* <ListWrapper items={this.state.item} /> */}
           {/* <FormComponent submitFN={this.addNew} /> */}
+          <FormComponent submitFN={this.props.addNew} />
         </>
       </BrowserRouter>
+
     )
   }
 }

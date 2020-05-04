@@ -1,25 +1,37 @@
 import React from 'react';
 import styles from './Button.module.scss';
+import PropTypes from 'prop-types'
 
-const Button = ({ children, href }) => (
-    <>
-        {
-            // ternary operator
-            href ? (
-                <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.button}>
-                    {children}
-                </a>
-            ) : (
-                    <button className={styles.button}>
+const Button = ({ children, href, secendary }) => {
+
+    const coverBtn = secendary ? styles.buttonSecendary : styles.button;
+
+    return (
+        <>
+            {
+                // ternary operator
+                href ? (
+                    <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={coverBtn}>
                         {children}
-                    </button>
-                )
-        }
-    </>
-);
+                    </a>
+                ) : (
+                        <button className={coverBtn}>
+                            {children}
+                        </button>
+                    )
+            }
+        </>
+    )
+};
+
+Button.propTypes = {
+    children: PropTypes.string,
+    href: PropTypes.string,
+    secendary: PropTypes.string,
+}
 
 export default Button;

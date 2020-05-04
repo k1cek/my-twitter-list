@@ -6,4 +6,12 @@
     background: none;
     border: 2px solid #1e58ff;
     color: #1e58ff;
+    
+  }
+
+  .buttonSecendary {
+    @extend .button;
+    background-color: royalblue;
+    color: white;
+    box-shadow: 0 10px 40px -6px rgb(0, 51, 94);
   }
