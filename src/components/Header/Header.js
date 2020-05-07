@@ -4,11 +4,11 @@ import logo from '../../assets/images/logo.svg';
 import HeaderNavigation from './HeaderNavigation';
 import Button from '../Button/Button';
 
-const Header = () => (
+const Header = ({ open }) => (
     <div className={styles.wrapper}>
         <img src={logo} alt="Logo navigation" />
         <HeaderNavigation />
-        <Button secendary>new item</Button>
+        <Button onClick={open} secendary>new item</Button>
     </div>
 )
 

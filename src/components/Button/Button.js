@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Button.module.scss';
 import PropTypes from 'prop-types'
 
-const Button = ({ children, href, secendary }) => {
+const Button = ({ children, href, secendary, ...props }) => {
 
     const coverBtn = secendary ? styles.buttonSecendary : styles.button;
 
@@ -19,7 +19,7 @@ const Button = ({ children, href, secendary }) => {
                         {children}
                     </a>
                 ) : (
-                        <button className={coverBtn}>
+                        <button {...props} className={coverBtn}>
                             {children}
                         </button>
                     )
